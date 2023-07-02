@@ -1,0 +1,18 @@
+<model-viewer src="free_pothos_potted_plant_-_money_plant.glb" ar ar-modes="scene-viewer webxr quick-look" camera-controls poster="poster.webp" shadow-intensity="1" exposure="1.05">
+    <button class="Hotspot" slot="hotspot-1" data-position="0.053145621552859686m 0.5077325948230885m 0.33363438517411226m" data-normal="0.6899778831758161m 0.5615278024746986m 0.45674615244811434m" data-visibility-attribute="visible">
+        <div class="HotspotAnnotation">Pothos Plant Leaf</div>
+    </button><button class="Hotspot" slot="hotspot-4" data-position="0.022875595815369427m 0.293789913769498m -0.2178392158567315m" data-normal="0.08170281660061825m -1.6237599213518757e-7m -0.9966567361732422m" data-visibility-attribute="visible">
+        <div class="HotspotAnnotation">Earthened Flower Pot</div>
+    </button><button class="Hotspot" slot="hotspot-5" data-position="0.12311991885010884m 0.08427087105681946m -0.20817619256743491m" data-normal="-0.3977633810517652m -1.4947777344001115e-7m -0.9174880340877728m" data-visibility-attribute="visible">
+        <div class="HotspotAnnotation">Wooden pot stand</div>
+    </button>
+    <div class="progress-bar hide" slot="progress-bar">
+        <div class="update-bar"></div>
+    </div>
+    <button slot="ar-button" id="ar-button">
+        View in your space
+    </button>
+    <div id="ar-prompt">
+        <img src="https://modelviewer.dev/shared-assets/icons/hand.png">
+    </div>
+</model-viewer>

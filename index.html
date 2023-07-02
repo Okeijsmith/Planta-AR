@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>&lt;model-viewer&gt; template</title>
+    <meta charset="utf-8">
+    <meta name="description" content="&lt;model-viewer&gt; template">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link type="text/css" href="./styles.css" rel="stylesheet"/>
+  </head>
+  <body>
+    <!-- <model-viewer> HTML element -->
+    <model-viewer id="Planta" src="free_pothos_potted_plant_-_money_plant.glb" ar ar-modes="scene-viewer webxr quick-look" camera-controls poster="poster.webp" shadow-intensity="1" exposure="1.05">
+      <button class="Hotspot" slot="hotspot-1" data-position="0.053145621552859686m 0.5077325948230885m 0.33363438517411226m" data-normal="0.6899778831758161m 0.5615278024746986m 0.45674615244811434m" data-visibility-attribute="visible">
+          <div class="HotspotAnnotation">Pothos Plant Leaf</div>
+      </button><button class="Hotspot" slot="hotspot-4" data-position="0.022875595815369427m 0.293789913769498m -0.2178392158567315m" data-normal="0.08170281660061825m -1.6237599213518757e-7m -0.9966567361732422m" data-visibility-attribute="visible">
+          <div class="HotspotAnnotation">Earthened Flower Pot</div>
+      </button><button class="Hotspot" slot="hotspot-5" data-position="0.12311991885010884m 0.08427087105681946m -0.20817619256743491m" data-normal="-0.3977633810517652m -1.4947777344001115e-7m -0.9174880340877728m" data-visibility-attribute="visible">
+          <div class="HotspotAnnotation">Wooden pot stand</div>
+      </button>
+      <div class="progress-bar hide" slot="progress-bar">
+          <div class="update-bar"></div>
+      </div>
+      <button slot="ar-button" id="ar-button">
+          View in your space
+      </button>
+      <div id="ar-prompt">
+          <img src="ar_hand_prompt.png">
+      </div>
+
+      <head>
+        <title>Back Button</title>
+      </head>
+      <body>
+        <a href="https://www.figma.com/proto/FgVXjGB97a9kG5YNToe6G5/Planta?type=design&node-id=0-1&viewport=-109%2C406%2C0.1&scaling=scale-down&starting-point-node-id=1%3A181" class="back-button">Back to Planta</a>
+      </body>
+
+
+      <div class="controls">
+        <div>
+          <p>Change Pot Color</p>
+          <select id="diffuse">
+            <option value="">None</option>
+            <option value="Textures/Rectangle171.png">Pot 1</option>
+            <option value="Textures/Rectangle170.png">Pot 2</option>
+            <option value="Textures/Rectangle169.png">Pot 3</option>
+            <option value="Textures/Rectangle168.png">Pot 4</option>
+          </select>
+        </div>
+
+    </model-viewer>  
+
+    <script type="module">
+      const modelViewerTexture1 = document.querySelector("model-viewer#Planta");
+      
+      modelViewerTexture1.addEventListener("load", () => {
+      
+        const material = modelViewerTexture1.model.materials[0];
+      
+        const createAndApplyTexture = async (channel, event) => {
+          const texture = await modelViewerTexture1.createTexture(event.target.value);
+          if (channel.includes('base') || channel.includes('metallic')) {
+            material.pbrMetallicRoughness[channel].setTexture(texture);
+          } else {
+            material[channel].setTexture(texture);
+          }
+        }
+      
+        document.querySelector('#diffuse').addEventListener('input', (event) => {
+          createAndApplyTexture('baseColorTexture', event);
+        });
+      
+      });
+      
+      </script>
+
+    <script src="script.js"></script>
+    <!-- Loads <model-viewer> for browsers: -->
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.0.1/model-viewer.min.js"></script>
+  </body>
+</html>
